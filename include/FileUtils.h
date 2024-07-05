@@ -139,6 +139,9 @@ private:
 #define DIR_CACHE_SIZE 256
 #define FILENAMELEN 64
 
+//#define DIR_CACHE_SIZE 128
+//#define FILENAMELEN 128
+
 // inline utility functions for uniform access to file/memory
 // and making it easy to to implement SNA/Z80 functions
 

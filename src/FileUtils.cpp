@@ -462,7 +462,7 @@ void FileUtils::DirToFile(string fpath, uint8_t ftype, unsigned long hash, unsig
                 if ( !fin || feof( fin ) ) eof1 = true;
                 if ( !eof1 ) {
                     size_t res = fread( line, sizeof(char), FILENAMELEN, fin);
-                    if ( !res || feof( fin ) /*|| res != 64 */ ) {
+                    if ( !res || feof( fin ) ) {
                         eof1 = true;
                     } else {
                         line[FILENAMELEN-1] = '\0';

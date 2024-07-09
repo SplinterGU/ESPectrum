@@ -36,6 +36,8 @@ visit https://zxespectrum.speccy.org/contacto
 #ifndef ESPECTRUM_OSD_H
 #define ESPECTRUM_OSD_H
 
+#define USE_RLE
+
 #include "fabgl.h"
 #include <string>
 #include <algorithm>
@@ -93,8 +95,14 @@ public:
     static void osdCenteredMsg(string msg, uint8_t warn_level);
     static void osdCenteredMsg(string msg, uint8_t warn_level, uint16_t millispause);
 
+#ifdef USE_RLE
+    static void restoreBackbufferData(bool force = false);
+    static void saveBackbufferData(uint16_t x, uint16_t y, uint16_t w, uint16_t h, bool force = false);
+    static void saveBackbufferData(bool force = false);
+#else
     static void restoreBackbufferData(bool force);
     static void saveBackbufferData();
+#endif
 
     // Menu
     static unsigned short menuRealRowFor(uint8_t virtual_row_num);

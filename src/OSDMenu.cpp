@@ -174,9 +174,10 @@ unsigned short OSD::menuRun(string new_menu) {
     if (menu_level == 0) {
         x = (Config::aspect_letterbox ? 24 : 8);
         y = 8;
+        for ( int i = 0; i < 5; i++ ) prev_y[i] = 0;
     } else {
         x = (Config::aspect_letterbox ? 24 : 8) + (60 * menu_level);
-        if (menu_saverect) {
+        if (menu_saverect && !prev_y[menu_level]) {
             y += (8 + (8 * menu_prevopt));
             prev_y[menu_level] = y;
         } else {
@@ -647,13 +648,13 @@ int OSD::menuTape(string title) {
     // printf(menu.c_str());
 
     // Position
-    if (menu_level == 0) {
+//    if (menu_level == 0) {
         x = (Config::aspect_letterbox ? 24 : 8);
         y = 8;
-    } else {
-        x = (Config::aspect_letterbox ? 24 : 8) + (60 * menu_level);
-        y = 8 + (16 * menu_level);
-    }
+//    } else {
+//        x = (Config::aspect_letterbox ? 24 : 8) + (60 * menu_level);
+//        y = 8 + (16 * menu_level);
+//    }
 
     // Columns
     cols = 39; // 36 for block info + 2 pre and post space + 1 for scrollbar

@@ -704,7 +704,6 @@ void OSD::do_OSD(fabgl::VirtualKey KeytoESP, bool CTRL) {
                         menu_level = 2;
                         menu_saverect = true;
                         if (sna_mnu == 1) {
-
                             FileUtils::remountSDCardIfNeeded();
 
                             if ( FileUtils::SDReady ) {
@@ -783,7 +782,7 @@ void OSD::do_OSD(fabgl::VirtualKey KeytoESP, bool CTRL) {
                             if ( FileUtils::SDReady ) {
                                 // menu_curopt = 1;
                                 // Select TAP File
-                                string mFile = fileDialog(FileUtils::TAP_Path, MENU_TAP_TITLE[Config::lang], DISK_TAPFILE, 46, 10);
+                                string mFile = fileDialog(FileUtils::TAP_Path, MENU_TAP_TITLE[Config::lang], DISK_TAPFILE, 46, 15);
                                 if (mFile != "") {
                                     Tape::LoadTape(mFile);
                                     return;

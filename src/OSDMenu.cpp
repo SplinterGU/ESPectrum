@@ -174,7 +174,7 @@ unsigned short OSD::menuRun(string new_menu) {
     if (menu_level == 0) {
         x = (Config::aspect_letterbox ? 24 : 8);
         y = 8;
-        for ( int i = 0; i < 5; i++ ) prev_y[i] = 0;
+        prev_y[0] = 0;
     } else {
         x = (Config::aspect_letterbox ? 24 : 8) + (60 * menu_level);
         if (menu_saverect && !prev_y[menu_level]) {
@@ -184,6 +184,8 @@ unsigned short OSD::menuRun(string new_menu) {
             y = prev_y[menu_level];
         }
     }
+
+    for ( int i = menu_level + 1; i < 5; i++ ) prev_y[i] = 0;
 
     // Rows
     real_rows = rowCount(menu);

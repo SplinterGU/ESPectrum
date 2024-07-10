@@ -2945,6 +2945,8 @@ void OSD::progressDialog(string title, string msg, int percent, int action) {
     static unsigned short progress_y;        
     static unsigned int j;
 
+    bool curr_menu_saverect = menu_saverect;
+
     if (action == 0 ) { // SHOW
 
         h = (OSD_FONT_H * 6) + 2;
@@ -3026,6 +3028,7 @@ void OSD::progressDialog(string title, string msg, int percent, int action) {
         // Restore backbuffer data
 #ifdef USE_RLE
         OSD::restoreBackbufferData(true);
+        menu_saverect = curr_menu_saverect;
 #else
         SaveRectpos = j;
         for (int  m = y; m < y + h; m++) {
